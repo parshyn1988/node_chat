@@ -1,18 +1,13 @@
 import {
   Entity,
-  PrimaryGeneratedColumn,
   Column,
-  CreateDateColumn,
   OneToMany,
-  DeleteDateColumn
 } from 'typeorm';
+import { BaseModel } from '../database/base.model';
 import { ChatMember } from '../chats/chat-member.entity';
 
 @Entity('users')
-export class User {
-  @PrimaryGeneratedColumn('identity', { type: 'bigint', generatedIdentity: 'ALWAYS' })
-  id!: string;
-
+export class User extends BaseModel {
   @Column({ type: 'varchar', length: 255, unique: true })
   email!: string;
 
@@ -21,12 +16,6 @@ export class User {
 
   @Column({ name: 'password_hash', type: 'varchar', length: 255, select: false })
   passwordHash!: string;
-
-  @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
-  createdAt!: Date;
-
-  @DeleteDateColumn({ name: 'deleted_at', type: 'timestamptz', nullable: true })
-  deletedAt!: Date | null;
 
   @OneToMany(() => ChatMember, (member) => member.user)
   memberships!: ChatMember[];

@@ -1,20 +1,15 @@
 import {
   Column,
-  CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryGeneratedColumn
 } from 'typeorm';
+import { BaseModel } from '../database/base.model';
 import { Chat } from '../chats/chat.entity';
 import { User } from '../users/user.entity';
 
 @Entity('messages')
-export class Message {
-  @PrimaryGeneratedColumn('identity', { type: 'bigint', generatedIdentity: 'ALWAYS' })
-  id!: string;
-
+export class Message extends BaseModel{
   @Column({ name: 'chat_id', type: 'bigint' })
   chatId!: string;
 
@@ -32,12 +27,6 @@ export class Message {
   @Column({ type: 'text' })
   body!: string;
 
-  @CreateDateColumn({ name: 'created_at', type: 'timestamptz' })
-  createdAt!: Date;
-
   @Column({ name: 'edited_at', type: 'timestamptz', nullable: true })
   editedAt!: Date | null;
-
-  @DeleteDateColumn({ name: 'deleted_at', type: 'timestamptz', nullable: true })
-  deletedAt!: Date | null;
 }

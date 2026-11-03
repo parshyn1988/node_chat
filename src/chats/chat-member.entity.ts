@@ -1,6 +1,5 @@
 import {
   CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
@@ -8,9 +7,10 @@ import {
 } from 'typeorm';
 import { Chat } from './chat.entity';
 import { User } from '../users/user.entity';
+import { SoftDeleteModel } from '../database/base.model';
 
 @Entity('chat_members')
-export class ChatMember {
+export class ChatMember extends SoftDeleteModel {
   @PrimaryColumn({ name: 'chat_id', type: 'bigint' })
   chatId!: string;
 
@@ -27,7 +27,4 @@ export class ChatMember {
 
   @CreateDateColumn({ name: 'joined_at', type: 'timestamptz' })
   joinedAt!: Date;
-
-  @DeleteDateColumn({ name: 'deleted_at', type: 'timestamptz', nullable: true })
-  deletedAt!: Date | null;
 }
