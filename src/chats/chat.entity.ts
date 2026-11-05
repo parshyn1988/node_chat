@@ -3,8 +3,8 @@ import {
   Column,
   OneToMany,
 } from 'typeorm';
-import { ChatMember } from './chat-member.entity';
-import { BaseModel } from '../database/base.model';
+import { ChatMember } from '@/chats/chat-member.entity';
+import { BaseModel } from '@/database/base.model';
 
 @Entity('chats')
 export class Chat extends BaseModel {
