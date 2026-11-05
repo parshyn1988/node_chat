@@ -6,7 +6,7 @@ import {
   PrimaryColumn
 } from 'typeorm';
 import { Chat } from './chat.entity';
-import { User } from '../users/user.entity';
+import { User } from '../users/entities/user.entity';
 import { SoftDeleteModel } from '../database/base.model';
 
 @Entity('chat_members')
