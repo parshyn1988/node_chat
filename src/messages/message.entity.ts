@@ -4,9 +4,9 @@ import {
   JoinColumn,
   ManyToOne,
 } from 'typeorm';
-import { BaseModel } from '../database/base.model';
-import { Chat } from '../chats/chat.entity';
-import { User } from '../users/user.entity';
+import { BaseModel } from '@/database/base.model';
+import { Chat } from '@/chats/chat.entity';
+import { User } from '@/users/entities/user.entity';
 
 @Entity('messages')
 export class Message extends BaseModel{
