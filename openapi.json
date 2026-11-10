@@ -39,7 +39,10 @@
         },
         "responses": {
           "201": {
-            "description": ""
+            "description": "User created"
+          },
+          "409": {
+            "description": "Email is already existed"
           }
         },
         "tags": [
